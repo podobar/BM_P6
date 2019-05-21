@@ -37,10 +37,10 @@
             this.SourcePBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SourcePBox.Location = new System.Drawing.Point(0, 0);
             this.SourcePBox.Margin = new System.Windows.Forms.Padding(0);
-            this.SourcePBox.MaximumSize = new System.Drawing.Size(896, 592);
-            this.SourcePBox.MinimumSize = new System.Drawing.Size(896, 592);
+            this.SourcePBox.MaximumSize = new System.Drawing.Size(450, 550);
+            this.SourcePBox.MinimumSize = new System.Drawing.Size(450, 550);
             this.SourcePBox.Name = "SourcePBox";
-            this.SourcePBox.Size = new System.Drawing.Size(896, 592);
+            this.SourcePBox.Size = new System.Drawing.Size(450, 550);
             this.SourcePBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.SourcePBox.TabIndex = 0;
             this.SourcePBox.TabStop = false;
@@ -50,7 +50,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 594);
+            this.ClientSize = new System.Drawing.Size(452, 552);
             this.Controls.Add(this.SourcePBox);
             this.Name = "FaceRecognition";
             this.Text = "Face recognition";

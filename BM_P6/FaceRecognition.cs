@@ -14,6 +14,7 @@ namespace BM_P6
         private readonly int VERTICES = 4;
         private Matrix<double> _faceCoordinates;
         private Bitmap _bitmapSource;
+        //Model holistyczny, metoda minimalnoodległościowa
         public FaceRecognition()
         {
             InitializeComponent();
@@ -25,18 +26,9 @@ namespace BM_P6
             using (var reader = new StreamReader(@"C:\Users\Lenovo\Desktop\faces\0ImageData.mat"))
             {
                 _faceCoordinates = MatlabReader.Read<double>(reader.BaseStream, "SubDir_Data");
-                // | x450
-                // | x450
-                // | x450
-                // | x450
-                // | x450
-                // | x450
-                // | x450
-                // | x450
                 List<double> list = new List<double>();
                 for (int i = 0; i < 8; ++i)
                     list.Add(_faceCoordinates[i, 0]);
-                ;
             }
         }
         private void LoadImages_Click(object sender, EventArgs e)
@@ -76,19 +68,21 @@ namespace BM_P6
                 var points = new Point[VERTICES];
                 for (int i = 0; i < VERTICES; ++i)
                     points[i] = new Point((int)_faceCoordinates[2*i,index], (int)_faceCoordinates[2*i+1,index]);
-                ;
-                Graphics g = Graphics.FromImage(SourcePBox.Image);
-                for (int i = 0; i < VERTICES; ++i)
-                    g.DrawLines(new Pen(new SolidBrush(Color.Red), 2), points);
+                CutFace(new Rectangle(
+                    points[1].X,
+                    points[1].Y,
+                    (points[3].X + points[2].X) / 2 - (points[0].X + points[1].X) / 2,
+                    (points[0].Y + points[3].Y) / 2 - (points[1].Y + points[2].Y) / 2
+                    ));
             }
-            else
-            {
-
-            }
-            
-            
-           
-
+        }
+        private void CutFace(Rectangle face)
+        {
+            Size s = new Size(450, 550);
+            Bitmap tmp_face = _bitmapSource.Clone(face, _bitmapSource.PixelFormat);
+            _bitmapSource = new Bitmap(tmp_face, s);
+            SourcePBox.Image = _bitmapSource;
+            ;
         }
     }
 }
