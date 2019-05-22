@@ -44,7 +44,7 @@
             this.SourcePBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.SourcePBox.TabIndex = 0;
             this.SourcePBox.TabStop = false;
-            this.SourcePBox.Click += new System.EventHandler(this.LoadImage_Click);
+            this.SourcePBox.Click += new System.EventHandler(this.Load_TrainingSet_From_Directory_Click);
             // 
             // FaceRecognition
             // 
